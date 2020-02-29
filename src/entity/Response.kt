@@ -1,3 +1,3 @@
-package dev.rahmat.entity
+package dev.rahmat.movie.entity
 
-data class Response<T>(val data: T, val code: Int, val message: String)
+data class Response<T>( val code: Int?, val message: String, val data: T?)
