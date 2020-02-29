@@ -1,6 +1,8 @@
 package dev.rahmat.movie
 
-import dev.rahmat.entity.Actor
+import dev.rahmat.movie.entity.Actor
+import dev.rahmat.movie.entity.Movie
+import dev.rahmat.movie.routes.*
 import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.routing.*
@@ -14,6 +16,8 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 @kotlin.jvm.JvmOverloads
 fun Application.module(testing: Boolean = false) {
 
+    val movies = initData()
+
     install(ContentNegotiation) {
         gson {
             setPrettyPrinting()
@@ -22,16 +26,64 @@ fun Application.module(testing: Boolean = false) {
 
     routing {
         get("/") {
-            call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
+            call.respondText("A very simple rest api using k-tor!", contentType = ContentType.Text.Plain)
         }
-
-        get("/json/gson") {
-            call.respond(Actor("Rahmatullah", 22))
-        }
+        movies(movies)
+        movieById(movies)
+        deleteById(movies)
+        createMovie(movies)
+        editMovie(movies)
     }
 }
 
-fun initData() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fun initData(): MutableList<Movie> {
+    val movies = mutableListOf<Movie>()
+    val movie = Movie(
+        id = "1234",
+        title = "Spongebob's epic night",
+        rating = 9.8,
+        year = 2019,
+        actors = listOf(Actor(name = "Spongebob Squarepants", age = 32))
+    )
+
+    movies.add(movie)
+
+    movies.add(
+        movie.copy(
+            id = "123433",
+            title = "Patrick the real star",
+            rating = 9.6,
+            year = 2019,
+            actors = listOf(Actor(name = "Patrick Star", age = 42), Actor(name = "Spongebob Squarepants", age = 32))
+        )
+    )
+
+    movies.add(
+        movie.copy(
+            id = "1sdf234",
+            title = "Squidward's falseto voice",
+            rating = 9.6,
+            year = 2019,
+            actors = listOf(Actor(name = "Squidward Tentacle", age = 32))
+        )
+    )
+
+    return movies
 
 }
 
