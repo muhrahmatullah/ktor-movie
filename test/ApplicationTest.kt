@@ -1,4 +1,4 @@
-package dev.rahmat.ktor-movie
+package dev.rahmat
 
 import io.ktor.application.*
 import io.ktor.response.*
