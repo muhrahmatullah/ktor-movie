@@ -1,0 +1,6 @@
+{
+  "name": "Ktor Movie",
+  "description": "A sample rest api",
+  "image": "heroku/java",
+  "addons": [ ]
+}
