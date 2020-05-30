@@ -5,8 +5,10 @@ buildscript {
     
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
     }
 }
+
 
 apply plugin: 'kotlin'
 apply plugin: 'application'
@@ -15,11 +17,20 @@ group 'dev.rahmat.movie'
 version '0.0.1'
 mainClassName = "io.ktor.server.netty.EngineMain"
 
+apply plugin: 'com.github.johnrengelman.shadow'
+
 sourceSets {
     main.kotlin.srcDirs = main.java.srcDirs = ['src']
     test.kotlin.srcDirs = test.java.srcDirs = ['test']
     main.resources.srcDirs = ['resources']
     test.resources.srcDirs = ['testresources']
+}
+
+
+shadowJar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
 }
 
 repositories {
