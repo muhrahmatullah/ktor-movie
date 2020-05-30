@@ -1,1 +1,1 @@
-web: java -jar build/libs/ktor-movie-0.0.1.jar
+web: ./build/install/ktor-movie/bin/ktor-movie
