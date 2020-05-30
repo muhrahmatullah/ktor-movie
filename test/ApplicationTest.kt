@@ -1,5 +1,6 @@
 package dev.rahmat
 
+import dev.rahmat.movie.module
 import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.request.*
