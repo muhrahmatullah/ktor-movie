@@ -45,10 +45,10 @@ POST movie/
  	"title": "Mari Pulang",
  	"rating": "5.6",
  	"year": 2019,
- 	"actor": {
+ 	"actors": [{
  		"name": "Rahmatullah",
  		"age": 22
- 	}
+ 	}]
  }
 ```
 
@@ -62,10 +62,10 @@ PUT movies/{id}
 	"title": "Mari Pulang Bersama",
 	"rating": "5.6",
 	"year": 2019,
-	"actor": {
+	"actor": [{
 		"name": "Rahmatullah aka matx",
 		"age": 22
-	}
+	}]
 }
 
 ```
